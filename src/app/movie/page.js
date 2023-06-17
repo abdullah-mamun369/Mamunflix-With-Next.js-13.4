@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MovieCard from "../Components/MovieCard";
 
 
 
@@ -20,15 +21,17 @@ const Movie = async () => {
 
     const res = await fetch(url, options);
     const data = await res.json();
-
-    console.log(data);
+    const main_data = data.titles;
 
     return (
         <>
             <h1>Movie page</h1>
-            <Link href="/movie/dymo">
-                Go Dynamic
-            </Link>
+
+            {
+                main_data.map((curElem) => {
+                    return <MovieCard key={curElem.id} {...curElem} />
+                })
+            }
         </>
     );
 };
