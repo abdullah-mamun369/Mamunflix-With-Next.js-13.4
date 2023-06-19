@@ -6,7 +6,7 @@ import styles from "../styles/common.module.css"
 
 const Movie = async () => {
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     const url = process.env.RAPID_API_KEY
     const RaKey = process.env.X_RapidAPI_Key
