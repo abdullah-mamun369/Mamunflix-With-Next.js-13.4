@@ -1,9 +1,12 @@
 import Link from "next/link";
 import MovieCard from "../Components/MovieCard";
+import styles from "../styles/common.module.css"
 
 
 
 const Movie = async () => {
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     const url = process.env.RAPID_API_KEY
     const RaKey = process.env.X_RapidAPI_Key
@@ -25,13 +28,18 @@ const Movie = async () => {
 
     return (
         <>
-            <h1>Movie page</h1>
-
-            {
-                main_data.map((curElem) => {
-                    return <MovieCard key={curElem.id} {...curElem} />
-                })
-            }
+            <section className={styles.movieSection}>
+                <div className={styles.container}>
+                    <h1>Series & Movie</h1>
+                    <div className={styles.card_section}>
+                        {
+                            main_data.map((curElem) => {
+                                return <MovieCard key={curElem.id} {...curElem} />
+                            })
+                        }
+                    </div>
+                </div>
+            </section>
         </>
     );
 };
